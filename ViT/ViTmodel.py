@@ -1,3 +1,4 @@
+import os
 import cv2
 import numpy as np
 import tensorflow as tf
@@ -8,6 +9,7 @@ MAX_SEQ_LENGTH = 10
 NUM_FEATURES = 1024
 IMG_SIZE = 128
 center_crop_layer = layers.CenterCrop(IMG_SIZE, IMG_SIZE)
+modelPath = os.path.join(os.getcwd(), "ViT\ViT_model_10.h5")
 
 def build_feature_extractor():
     feature_extractor = keras.applications.DenseNet121(
@@ -89,7 +91,7 @@ def get_compiled_model():
 
 model = get_compiled_model()
 feature_extractor = build_feature_extractor()
-model.load_weights(r'D:\FYP\ViT\ViT_model_10.h5')
+model.load_weights(modelPath)
 
 def prepare_single_video(frames):
     frame_features = np.zeros(shape=(1, MAX_SEQ_LENGTH, NUM_FEATURES), dtype="float32")

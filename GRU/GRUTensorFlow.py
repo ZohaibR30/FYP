@@ -1,3 +1,4 @@
+import os
 import cv2
 import numpy as np
 from collections import deque
@@ -7,6 +8,7 @@ IMG_SIZE = 224
 BATCH_SIZE = 64
 MAX_SEQ_LENGTH = 10
 NUM_FEATURES = 2048
+modelPath = os.path.join(os.getcwd(), "GRU\GRUmodel.h5")
 
 def build_feature_extractor():
     feature_extractor = keras.applications.InceptionV3(
@@ -42,7 +44,7 @@ def get_sequence_model():
 
 model = get_sequence_model()
 feature_extractor = build_feature_extractor()
-model.load_weights(r'D:\FYP\GRU\GRUmodel.h5')
+model.load_weights(modelPath)
 
 def prepare_single_video(frames):
     frames = frames[None, ...]

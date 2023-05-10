@@ -1,3 +1,4 @@
+import os
 import cv2
 import numpy as np
 from collections import deque
@@ -7,6 +8,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import plot_model
+
+modelPath = os.path.join(os.getcwd(), "LRCN\model.h5")
 
 # Specify the height and width to which each video frame will be resized in our dataset.
 IMAGE_HEIGHT , IMAGE_WIDTH = 64, 64
@@ -62,7 +65,7 @@ def gen_frames(camera):
     # Construct the required LRCN model.
     LRCN_model = create_LRCN_model()
     
-    LRCN_model.load_weights(r'D:\FYP\LRCN\model.h5')
+    LRCN_model.load_weights(modelPath)
     
     # Display the success message.
     print("Model Created Successfully!")

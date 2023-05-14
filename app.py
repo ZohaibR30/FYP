@@ -12,7 +12,6 @@ for local webcam use cv2.VideoCapture(0)
 
 app = Flask(__name__)
 CORS(app)
-camera = cv2.VideoCapture(0)
 
 @app.route('/')
 def index():
@@ -20,14 +19,17 @@ def index():
 
 @app.route('/video_feed/LRCN')
 def video_feed_LRCN():
+    camera = cv2.VideoCapture(0)
     return Response(gen_frames(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/video_feed/GRU')
 def video_feed_GRU():
+    camera = cv2.VideoCapture(0)
     return Response(load_video(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/video_feed/ViT')
 def video_feed_ViT():
+    camera = cv2.VideoCapture(0)
     return Response(load_video_ViT(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == "__main__":    

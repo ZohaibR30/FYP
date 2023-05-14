@@ -5,9 +5,6 @@ from collections import deque
 
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.callbacks import EarlyStopping
-from tensorflow.keras.utils import plot_model
 
 modelPath = os.path.join(os.getcwd(), "LRCN\model.h5")
 

@@ -1,4 +1,5 @@
 import cv2
+from flask_cors import CORS
 from ViT.ViTmodel import load_video_ViT
 from GRU.GRUTensorFlow import load_video
 from LRCN.LRCNTensorFlow import gen_frames
@@ -10,6 +11,7 @@ for local webcam use cv2.VideoCapture(0)
 '''
 
 app = Flask(__name__)
+CORS(app)
 camera = cv2.VideoCapture(0)
 
 @app.route('/')

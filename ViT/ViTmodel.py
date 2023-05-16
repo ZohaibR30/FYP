@@ -5,11 +5,11 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
-MAX_SEQ_LENGTH = 10
+MAX_SEQ_LENGTH = 1
 NUM_FEATURES = 1024
 IMG_SIZE = 128
 center_crop_layer = layers.CenterCrop(IMG_SIZE, IMG_SIZE)
-modelPath = os.path.join(os.getcwd(), "ViT\ViT_model_10.h5")
+modelPath = os.path.join(os.getcwd(), "ViT\ViT_model_Seq1.h5")
 
 def build_feature_extractor():
     feature_extractor = keras.applications.DenseNet121(

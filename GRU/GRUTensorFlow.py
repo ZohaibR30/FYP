@@ -6,9 +6,9 @@ from tensorflow import keras
 
 IMG_SIZE = 224
 BATCH_SIZE = 64
-MAX_SEQ_LENGTH = 10
+MAX_SEQ_LENGTH = 1
 NUM_FEATURES = 2048
-modelPath = os.path.join(os.getcwd(), "GRU\GRUmodel.h5")
+modelPath = os.path.join(os.getcwd(), "GRU\GRUmodel_Seq1.h5")
 
 def build_feature_extractor():
     feature_extractor = keras.applications.InceptionV3(

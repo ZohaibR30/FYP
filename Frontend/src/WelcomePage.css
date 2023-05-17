@@ -1,0 +1,45 @@
+.welcome-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .welcome-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button-container button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: wheat;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #e0e0e0;
+  }
+  .video-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .video-stream {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+  }

@@ -3,66 +3,41 @@ import axios from 'axios';
 import './WelcomePage.css';
 
 function WelcomePage() {
-  const handleButtonClick = (apiEndpoint, modelName) => {
-    const newTab = window.open('', '_blank');
-    newTab.document.write(`
-      <html>
-        <head>
-          <title>${modelName} Video Stream</title>
-          <style>
-            body {
-              background-color: black;
-              margin: 0;
-              overflow: hidden;
-            }
-            h1 {
-              color: white;
-              padding: 10px;
-              text-align: center;
-            }
-            iframe {
-              border: none;
-              width: 100%;
-              height: 100vh;
-            }
-          </style>
-        </head>
-        <body>
-          <h1>${modelName}</h1>
-          <iframe src="${apiEndpoint}" allow="autoplay" allowfullscreen></iframe>
-        </body>
-      </html>
-    `);
-    newTab.document.close();
-
+  const handleButtonClick = (apiEndpoint) => {
+    const newTab = window.open(apiEndpoint, '_blank');
     newTab.onbeforeunload = () => {
-      axios
-        .post('/api/stop', { apiEndpoint })
-        .then((response) => {
-          console.log(response.data);
+      // Send a request to stop the API when the tab is closed
+      axios.post('/api/stop', { apiEndpoint })
+        .then(response => {
+          console.log(response.data);  // Handle the response from the backend
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(error => {
+          console.error(error);  // Handle any errors that occurred during the API call
         });
     };
   };
 
   return (
     <div className="welcome-container">
-      <h1 className="welcome-title">Autonomous DigiWatch</h1>
-      <p className="welcome-description">
-        Select The Model You Want To Test:
-      </p>
-      <div className="button-container">
-        <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/LRCN', 'LRCN')}>
-          LRCN
-        </button>
-        <button onClick={() => handleButtonClick('http://127.0.0.1:5000', 'GRU')}>
-          GRU
-        </button>
-        <button onClick={() => handleButtonClick('http://127.0.0.1:5000', 'Visual Transformer')}>
-          Visual Transformer
-        </button>
+      <video autoPlay muted loop className="welcome-video">
+        <source src="https://thumbs.gfycat.com/ImmaculateHollowAnemonecrab-mobile.mp4" type="video/mp4" />
+      </video>
+      <div className="content-container">
+        <h1 className="welcome-title">Autonomous DigiWatch</h1>
+        <p className="welcome-description">
+          Select The Model You Want To Test:
+        </p>
+        <div className="button-container">
+          <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/LRCN')}>
+            LRCN
+          </button>
+          <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/GRU')}>
+            GRU
+          </button>
+          <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/ViT')}>
+            Visual Transformer
+          </button>
+        </div>
       </div>
     </div>
   );

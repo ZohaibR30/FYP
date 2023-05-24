@@ -19,25 +19,20 @@ function WelcomePage() {
 
   return (
     <div className="welcome-container">
-      <video autoPlay muted loop className="welcome-video">
-        <source src="https://thumbs.gfycat.com/ImmaculateHollowAnemonecrab-mobile.mp4" type="video/mp4" />
-      </video>
-      <div className="content-container">
-        <h1 className="welcome-title">Autonomous DigiWatch</h1>
-        <p className="welcome-description">
-          Select The Model You Want To Test:
-        </p>
-        <div className="button-container">
-          <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/LRCN')}>
-            LRCN
-          </button>
-          <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/GRU')}>
-            GRU
-          </button>
-          <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/ViT')}>
-            Visual Transformer
-          </button>
-        </div>
+      <h1 className="welcome-title">Autonomous DigiWatch</h1>
+      <p className="welcome-description">
+        Select The Model You Want To Test:
+      </p>
+      <div className="button-container">
+        <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/LRCN')}>
+          LRCN
+        </button>
+        <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/GRU')}>
+          GRU
+        </button>
+        <button onClick={() => handleButtonClick('http://127.0.0.1:5000/video_feed/ViT')}>
+          Visual Transformer
+        </button>
       </div>
     </div>
   );
